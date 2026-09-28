@@ -1,0 +1,28 @@
+export interface Env {
+  IMG_DB?: D1Database;
+  DB: D1Database;
+  ASSETS?: Fetcher;
+  ENVIRONMENT?: string;
+  LIFF_ID?: string;
+  ALLOW_DEV_MOCK?: string;
+  RETENTION_DAYS?: string;
+  MAINTENANCE_EMAIL_RECIPIENTS?: string;
+  LINE_CHANNEL_ACCESS_TOKEN?: string;
+}
+
+export const APP_VERSION = "v3.0";
+export const TIMEZONE = "Asia/Bangkok";
+
+export const ERROR_CODES = {
+  VALIDATION_ERROR: "VALIDATION_ERROR",
+  UNAUTHORIZED: "UNAUTHORIZED",
+  FORBIDDEN: "FORBIDDEN",
+  LOCKED_TRANSACTION: "LOCKED_TRANSACTION",
+  NOT_FOUND: "NOT_FOUND",
+  DUPLICATE_SITE_RECORD: "DUPLICATE_SITE_RECORD",
+  CONCURRENT_WRITE_CONFLICT: "CONCURRENT_WRITE_CONFLICT",
+  SERVER_ERROR: "SERVER_ERROR",
+  PARSE_ERROR: "PARSE_ERROR"
+} as const;
+
+export type ErrorCode = (typeof ERROR_CODES)[keyof typeof ERROR_CODES];

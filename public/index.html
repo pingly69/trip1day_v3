@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ระบบบันทึกเบิกค่าเดินทาง ver.3.0</title>
+
+  <!-- Google Font: Prompt (Modern High-Legibility Thai Font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Pinned LINE LIFF SDK version 2.22.4 -->
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- App Header Bar -->
+  <header class="app-header-bar">
+    <div class="brand-wrapper">
+      <div class="brand-icon">🚗</div>
+      <div>
+        <div class="brand-title">ระบบเบิกค่าเดินทาง</div>
+      </div>
+    </div>
+    <div class="brand-version">ver.3.0</div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+    <div id="app-screen-container">
+      <!-- Dynamic Screen Content rendered here (Day Summary List / Trip Form) -->
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Summary Bar (Active on Trip Form) -->
+  <div id="sticky-bar" class="sticky-bar">
+    <div class="sticky-bar-inner">
+      <div class="sticky-stat">
+        <div class="sticky-stat-label">ยอดเบิกสุทธิ</div>
+        <div id="sticky-net-total" class="sticky-stat-val">0.00 ฿</div>
+        <div id="sticky-total-km" class="sticky-stat-sub">0.0 กม.</div>
+      </div>
+      <button type="button" id="btn-submit-tx" class="btn btn-primary btn-submit" onclick="TripFormComponent.submitForm()">
+        💾 บันทึกขอเบิก
+      </button>
+    </div>
+  </div>
+
+  <!-- Delete Transaction Modal -->
+  <div id="modal-delete-tx" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-title">🗑️ ยืนยันการลบรายการ</div>
+      <div class="modal-body">
+        คุณแน่ใจหรือไม่ว่าต้องการลบรายการเบิกค่าเดินทางนี้? เมื่อลบแล้วจะไม่สามารถกู้คืนได้
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" onclick="DaySummaryListComponent.closeDeleteModal()">
+          ยกเลิก
+        </button>
+        <button type="button" class="btn btn-primary" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%); box-shadow:0 4px 14px rgba(239, 68, 68, 0.4);" onclick="DaySummaryListComponent.executeDeleteTransaction()">
+          ยืนยันลบ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- App Scripts -->
+  <script src="config.js"></script>
+  <script src="js/cache.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/trip_card.js"></script>
+  <script src="js/trip_form.js"></script>
+  <script src="js/day_summary.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

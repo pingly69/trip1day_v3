@@ -1,0 +1,29 @@
+name = "trip1day-app"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# Cloudflare Static Assets (Frontend)
+assets = { directory = "./public", binding = "ASSETS" }
+
+# Cloudflare D1 Database Binding
+[[d1_databases]]
+binding = "IMG_DB"
+database_name = "IMG_DB"
+database_id = "4db03e65-cc9d-458e-81f7-b8119669dd17"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "IMG_DB"
+database_id = "4db03e65-cc9d-458e-81f7-b8119669dd17"
+
+# Cron Trigger for Daily Maintenance (02:00 UTC = 09:00 Asia/Bangkok)
+[triggers]
+crons = ["0 2 * * *"]
+
+# Project Environment Variables
+[vars]
+ENVIRONMENT = "production"
+LIFF_ID = "2009016720-k0zSXOrx"
+ALLOW_DEV_MOCK = "true"
+RETENTION_DAYS = "0"
+MAINTENANCE_EMAIL_RECIPIENTS = "pingly69@gmail.com,pingly69@outlook.com"
